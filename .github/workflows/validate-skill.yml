@@ -1,0 +1,33 @@
+name: Validate Agent Skill
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify Directory Layout & Structure
+        run: |
+          test -f skills/agent-readiness-discovery/SKILL.md
+          test -f skills/agent-readiness-discovery/references/discovery-templates.md
+          test -f skills/agent-readiness-discovery/references/auth-and-bot-templates.md
+          test -f skills/agent-readiness-discovery/references/commerce-and-content-templates.md
+          test -f skills/agent-readiness-discovery/references/validation-checklist.md
+          test -f scripts/check-readiness.sh
+          test -x scripts/check-readiness.sh
+
+      - name: Verify Frontmatter in SKILL.md
+        run: |
+          grep -q "^name: agent-readiness-discovery" skills/agent-readiness-discovery/SKILL.md
+          grep -q "^description:" skills/agent-readiness-discovery/SKILL.md
+          echo "Frontmatter is valid."
+
+      - name: Test Auditor Script (Dry-run)
+        run: |
+          bash scripts/check-readiness.sh example.com || true
