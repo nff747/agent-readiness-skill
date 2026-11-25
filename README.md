@@ -3,6 +3,7 @@
 # 🤖 Agent Readiness Discovery (`agent-readiness-discovery`)
 
 [![Lunar Paradox](https://img.shields.io/badge/Organization-Lunar_Paradox-0a0e1a?style=for-the-badge&logo=probot&logoColor=d7b886)](https://lunarparadox.com)
+[![Live Interactive Sandbox](https://img.shields.io/badge/Live_Sandbox-Interactive_Auditor-06b6d4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://nff747.github.io/agent-readiness-skill/)
 ### An open `agentskills.io` standard skill to make any website or API 100% AI-agent ready.
 
 [![Agent Skills](https://img.shields.io/badge/Agent_Skills-v0.2.0-06b6d4?style=for-the-badge&logo=probot&logoColor=white)](https://schemas.agentskills.io/discovery/0.2.0/schema.json)
