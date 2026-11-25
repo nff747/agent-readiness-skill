@@ -16,6 +16,40 @@
 
 </div>
 
+
+## 🎬 10-Second Terminal Walkthrough
+
+See  audit a production Next.js / Cloudflare site and patch all failing specs in real time:
+
+```text
+$ npx skills add nff747/agent-readiness-skill
+✔ Added agent-readiness-discovery to .claude/skills/ (v0.2.0)
+
+$ claude
+> Audit my site localhost:3000 for AI agent readiness and fix failing endpoints.
+
+🤖 Running agent-readiness-discovery audit...
+  ✖ [FAIL] /.well-known/api-catalog (RFC 9727) -> Missing linkset+json
+  ✖ [FAIL] /.well-known/agent-card.json (A2A)  -> Missing A2A Agent Card
+  ✖ [FAIL] /.well-known/mcp/server-card.json   -> Missing SEP-1649 manifest
+  ✖ [FAIL] /auth.md                             -> 404 Not Found
+  ✖ [FAIL] Accept: text/markdown negotiation   -> No Vary: Accept header
+
+🔧 Generating RFC-compliant manifests & middleware handlers...
+  ✔ Created app/.well-known/api-catalog/route.ts (application/linkset+json)
+  ✔ Created app/.well-known/agent-card.json/route.ts
+  ✔ Created app/.well-known/mcp/server-card.json/route.ts
+  ✔ Created public/auth.md (Authentication guide for autonomous agents)
+  ✔ Injected Vary: Accept Markdown transformer in middleware.ts
+
+🚀 Re-running pre-flight validation:
+  ======================================================
+  Audit Target: http://localhost:3000
+  Result: 18 / 18 CHECKS PASSED (100% Agent Ready)
+  Score on isitagentready.com: A+
+  ======================================================
+```
+
 ---
 
 ## ⚡ The Problem: 16+ Competing Specs to Make a Site "Agent Ready"
